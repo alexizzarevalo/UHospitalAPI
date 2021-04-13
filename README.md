@@ -1,3 +1,39 @@
+# Crear entorno de desarrollo
+
+> Estos comandos fueron ejecutados en `Powershell` de Windows
+ 
+Crear un entorno virtual
+
+```ps
+python3 -m venv venv
+```
+
+Activar el entorno virtual
+
+```ps
+.\venv\Scripts\activate
+```
+
+Instalar las dependencias
+
+```ps
+pip install -r requirements.txt
+```
+
+# Correr la API
+
+Agregar una variable de entorno con el nombre del archivo inicial
+
+```ps
+$env:FLASK_APP = "main.py"
+```
+
+Correr el servidor de Flask
+
+```ps
+flask run
+```
+
 # Comandos de GIT
 
 Inicializar un repositorio local
