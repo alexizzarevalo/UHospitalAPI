@@ -70,7 +70,7 @@ Utiliza JSON como estandar
 
 ### Verbos o metodos HTTP
 
-[Ver mas acerca de metodos de peticion](!https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+[Ver mas acerca de metodos de peticion](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
 
 - GET: Obtener algo
 - POST: Guardar algo
@@ -79,7 +79,7 @@ Utiliza JSON como estandar
 
 ### Codigos de respuesta
 
-[Ver mas acerca de codigos de respuesta](!https://developer.mozilla.org/es/docs/Web/HTTP/Status)
+[Ver mas acerca de codigos de respuesta](https://developer.mozilla.org/es/docs/Web/HTTP/Status)
 - Respuestas informativas (100–199),
 - Respuestas satisfactorias (200–299),
 - Redirecciones (300–399),
