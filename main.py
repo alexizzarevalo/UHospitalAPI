@@ -2,6 +2,8 @@ from flask import Flask, request
 from flask_cors import CORS
 # Se importa el archivo users.py
 import users
+import csv
+import os
 
 # Se crea una instancia de Flask
 app = Flask(__name__)
@@ -42,7 +44,26 @@ def api_update_user(username):
     new_email = body["email"]
     return users.update_user(username, new_email)
 
+app.config['UPLOAD_FOLDER'] = 'C:\\Users\\dalex\\github\\UHospitalBackend'
+
 # Ruta inicial de la API, saluda al mundo
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+# Ruta inicial de la API, saluda al mundo
+@app.route('/', methods=["POST"])
+def cargar():
+    file = request.files["entrada_csv"]
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], "entrada.csv"))
+    read_csv("entrada.csv")   
+    return 'Hello, World!'
+
+
+def read_csv(path):
+    with open(path, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            print(row["username"])
+            print(row["email"])
+            users.add_user(row["username"], row["email"])
