@@ -63,7 +63,7 @@ def cargar():
 
 def read_csv(path):
     with open(path, mode='r', encoding="utf-8-sig") as csv_file:
-        csv_reader = csv.DictReader(csv_file)
+        csv_reader = csv.DictReader(csv_file, fieldnames=["nombre", "correo"])
         for row in csv_reader:
             # print(row["contraseña"])
             # yield {unicode(key, 'utf-8'):unicode(value, 'utf-8') for key, value in row.iteritems()}
