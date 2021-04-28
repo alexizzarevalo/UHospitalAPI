@@ -65,9 +65,9 @@ def read_csv(path):
     with open(path, mode='r', encoding="utf-8-sig") as csv_file:
         csv_reader = csv.DictReader(csv_file)
         for row in csv_reader:
-            print(row["contraseña"])
+            # print(row["contraseña"])
             # yield {unicode(key, 'utf-8'):unicode(value, 'utf-8') for key, value in row.iteritems()}
-            # users.add_user(row["nombre"], row["correo"])
+            users.add_user(row["nombre"], row["correo"])
 
 @app.route('/report_user', methods=["GET"])
 def report_user():
