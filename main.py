@@ -63,11 +63,10 @@ def cargar():
 
 def read_csv(path):
     with open(path, mode='r', encoding="utf-8-sig") as csv_file:
-        csv_reader = csv.DictReader(csv_file)
+        csv_reader = csv.DictReader(csv_file, fieldnames=["username", "email"])
         for row in csv_reader:
-            print(row["contraseña"])
-            # yield {unicode(key, 'utf-8'):unicode(value, 'utf-8') for key, value in row.iteritems()}
-            # users.add_user(row["nombre"], row["correo"])
+            # print(row["contraseña"])
+            users.add_user(row["username"], row["email"])
 
 @app.route('/report_user', methods=["GET"])
 def report_user():
