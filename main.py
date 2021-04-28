@@ -45,7 +45,7 @@ def api_update_user(username):
     new_email = body["email"]
     return users.update_user(username, new_email)
 
-app.config['UPLOAD_FOLDER'] = 'C:\\Users\\dalex\\github\\UHospitalBackend'
+# app.config['UPLOAD_FOLDER'] = 'C:\\Users\\dalex\\github\\UHospitalBackend'
 
 # Ruta inicial de la API, saluda al mundo
 @app.route('/')
@@ -56,7 +56,7 @@ def hello_world():
 @app.route('/', methods=["POST"])
 def cargar():
     file = request.files["entrada_csv"]
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], "entrada.csv"))
+    file.save("entrada.csv")
     read_csv("entrada.csv")   
     return 'Hello, World!'
 
