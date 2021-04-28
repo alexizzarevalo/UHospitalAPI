@@ -82,4 +82,4 @@ def send_report():
     return send_file("report.pdf", attachment_filename="user_report.pdf")
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(Threaded=False, port=5000)
