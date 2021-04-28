@@ -76,14 +76,10 @@ def report_user():
     user_report_live.create_user_report(filename, all_users)
     return send_file(filename)
 
-
-
-
-
-
-
-
 # Enviar un reporte
 @app.route('/report', methods=["GET"])
 def send_report():
     return send_file("report.pdf", attachment_filename="user_report.pdf")
+
+if __name__ == "__main__":
+    app.run(port=5000)
