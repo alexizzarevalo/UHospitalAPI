@@ -1,9 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS
 # Se importa el archivo users.py
 import users
 import csv
 import os
+from reports import user_report_live
 
 # Se crea una instancia de Flask
 app = Flask(__name__)
@@ -61,9 +62,28 @@ def cargar():
 
 
 def read_csv(path):
-    with open(path, mode='r') as csv_file:
+    with open(path, mode='r', encoding="utf-8-sig") as csv_file:
         csv_reader = csv.DictReader(csv_file)
         for row in csv_reader:
-            print(row["username"])
-            print(row["email"])
-            users.add_user(row["username"], row["email"])
+            print(row["contraseña"])
+            # yield {unicode(key, 'utf-8'):unicode(value, 'utf-8') for key, value in row.iteritems()}
+            # users.add_user(row["nombre"], row["correo"])
+
+@app.route('/report_user', methods=["GET"])
+def report_user():
+    filename = "usuarios.pdf"
+    all_users = users.get_all_users()
+    user_report_live.create_user_report(filename, all_users)
+    return send_file(filename)
+
+
+
+
+
+
+
+
+# Enviar un reporte
+@app.route('/report', methods=["GET"])
+def send_report():
+    return send_file("report.pdf", attachment_filename="user_report.pdf")

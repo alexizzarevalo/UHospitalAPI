@@ -17,6 +17,10 @@ def add_user(username, email):
 def get_users():
     return Response(json.dumps(users), mimetype='application/json')
 
+# Retorna la lista completa de usuarios
+def get_all_users():
+    return users
+
 # Busca el usuario con el username indicado y lo devuelve
 def get_user(username):
     for user in users:

@@ -97,3 +97,70 @@ Ejemplos:
 - 409: Conflict
 - 500: Internal Server Error
 - 501: Not Implemented
+
+# Reports
+
+### Install library
+
+```
+pip install reportlab
+```
+
+### User guide
+
+- https://www.reportlab.com/docs/reportlab-userguide.pdf
+- https://youtu.be/B3OCXBL4Hxs
+
+### Create pdf from template
+
+```python
+from reportlab.platypus import SimpleDocTemplate
+from reportlab.lib.pagesizes import letter
+
+fileName = "report.pdf"
+pdf = SimpleDocTemplate(fileName, pagesize=letter)
+```
+
+### Create a title
+
+```python
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Paragraph
+
+styles = getSampleStyleSheet()
+paragraph = Paragraph("Usuarios registrados", styles['Title'])
+```
+
+### Create table
+
+```python
+from reportlab.platypus import Table, TableStyle
+from reportlab.lib import colors
+
+data = [
+    ["alexizzarevalo", "alexizzarevalo@gmail.com"],
+    ["darwinarevalo", "darwinarevalo@gmail.com"],
+    ["usuarioprueba", "usuarioprueba@gmail.com"],
+]
+
+style = TableStyle([
+    ('BACKGROUND', (0,0), (1,0), colors.green),
+    ('TEXTCOLOR', (0,0), (1,0), colors.white),
+])
+
+table = Table(data, style=style)
+```
+
+### Save pdf with elements
+
+```python
+from reportlab.platypus import Spacer
+
+elements = [
+    paragraph,
+    Spacer(10,10),
+    table
+]
+
+pdf.build(elements)
+```
